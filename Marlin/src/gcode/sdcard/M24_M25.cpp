@@ -100,7 +100,7 @@ void GcodeSuite::M25() {
 
     #if ENABLED(HOST_ACTION_COMMANDS)
       #if ENABLED(HOST_PROMPT_SUPPORT)
-        host_prompt_open(PROMPT_PAUSE_RESUME, PSTR("Pause SD"), PSTR("Resume"));
+        host_prompt_open(PROMPT_PAUSE_RESUME, PSTR(MSG_HOST_PAUSE_SD), PSTR(MSG_HOST_RESUME));
       #endif
       #ifdef ACTION_ON_PAUSE
         host_action_pause();
