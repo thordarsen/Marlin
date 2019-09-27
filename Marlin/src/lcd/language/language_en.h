@@ -1584,6 +1584,9 @@
 #ifndef MSG_HOST_RESUME
   #define MSG_HOST_RESUME                     _UxGT("Resume")
 #endif
+#ifndef MSG_HOST_CONTINUE
+  #define MSG_HOST_CONTINUE                    _UxGT("Continue")
+#endif
 
 #ifndef MSG_HOST_ABORT
   #define MSG_HOST_ABORT                      _UxGT("UI Abort")
@@ -1591,6 +1594,27 @@
 #ifndef MSG_HOST_PAUSE
   #define MSG_HOST_PAUSE                      _UxGT("UI Pause")
 #endif
+#ifndef MSG_HOST_FILAMENT_RUNOUT
+  #define MSG_HOST_FILAMENT_RUNOUT            _UxGT("FilamentRunout T")
+#endif
+#ifndef MSG_HOST_G29RETRY
+  #define MSG_HOST_G29RETRY                   _UxGT("G29 Retrying")
+#endif
+#ifndef MSG_HOST_LOAD_FILAMENT
+  #define MSG_HOST_LOAD_FILAMENT              _UxGT("Load Filament T")
+#endif
+#ifndef MSG_HOST_CONTINUOUS_PURGE
+  #define MSG_HOST_CONTINUOUS_PURGE           _UxGT("Continuous Purge Running...")
+#endif
+#ifndef MSG_HOST_DISABLE_RUNOUT
+  #define MSG_HOST_DISABLE_RUNOUT                      _UxGT("DisableRunout")
+#endif
+#ifndef MSG_HOST_NOZZLE_PARKED
+  #define MSG_HOST_NOZZLE_PARKED                      _UxGT("Nozzle Parked")
+#endif
+
+
+
 
 
 
