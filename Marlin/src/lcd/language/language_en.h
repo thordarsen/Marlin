@@ -1576,3 +1576,21 @@
 #ifndef MSG_BACKLASH_SMOOTHING
   #define MSG_BACKLASH_SMOOTHING              _UxGT("Smoothing")
 #endif
+
+// Host Prompt Messages
+#ifndef MSG_HOST_DISMISS
+  #define MSG_HOST_DISMISS                    _UxGT("Dismiss")
+#endif
+#ifndef MSG_HOST_RESUME
+  #define MSG_HOST_RESUME                     _UxGT("Resume")
+#endif
+
+#ifndef MSG_HOST_ABORT
+  #define MSG_HOST_ABORT                      _UxGT("UI Abort")
+#endif
+#ifndef MSG_HOST_PAUSE
+  #define MSG_HOST_PAUSE                      _UxGT("UI Pause")
+#endif
+
+
+
