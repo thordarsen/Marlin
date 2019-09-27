@@ -1155,8 +1155,12 @@ void setup() {
     SETUP_RUN(host_action_prompt_end());
   #endif
 
-  #if HAS_TRINAMIC_CONFIG && DISABLED(PSU_DEFAULT_OFF)
-    SETUP_RUN(test_tmc_connection(true, true, true, true));
+  #if ENABLED(HOST_PROMPT_SUPPORT)
+    host_action_prompt_end();
+  #endif
+
+  #if HAS_TRINAMIC && DISABLED(PS_DEFAULT_OFF)
+    test_tmc_connection(true, true, true, true);
   #endif
 
   #if ENABLED(PRUSA_MMU2)
