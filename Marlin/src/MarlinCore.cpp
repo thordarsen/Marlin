@@ -1167,6 +1167,10 @@ void setup() {
     host_action_prompt_end();
   #endif
 
+  #if ENABLED(HOST_PROMPT_SUPPORT)
+    host_action_prompt_end();
+  #endif
+
   #if HAS_TRINAMIC && DISABLED(PS_DEFAULT_OFF)
     test_tmc_connection(true, true, true, true);
   #endif
