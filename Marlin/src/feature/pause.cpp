@@ -181,10 +181,10 @@ bool load_filament(const float &slow_load_length/*=0*/, const float &fast_load_l
       ;
       host_prompt_reason = PROMPT_USER_CONTINUE;
       host_action_prompt_end();
-      host_action_prompt_begin(PSTR("Load Filament T"), false);
+      host_action_prompt_begin(PSTR(MSG_HOST_LOAD_FILAMENT), false);
       SERIAL_CHAR(tool);
       SERIAL_EOL();
-      host_action_prompt_button(PSTR("Continue"));
+      host_action_prompt_button(MSG_HOST_CONTINUE);
       host_action_prompt_show();
     #endif
     #if ENABLED(EXTENSIBLE_UI)
@@ -240,7 +240,7 @@ bool load_filament(const float &slow_load_length/*=0*/, const float &fast_load_l
 
     wait_for_user = true;
     #if ENABLED(HOST_PROMPT_SUPPORT)
-      host_prompt_do(PROMPT_USER_CONTINUE, PSTR("Continuous Purge Running..."), PSTR("Continue"));
+      host_prompt_do(PROMPT_USER_CONTINUE, PSTR(MSG_HOST_CONTINUOUS_PURGE), PSTR(MSG_HOST_CONTINUE));
     #endif
     #if ENABLED(EXTENSIBLE_UI)
       ExtUI::onUserConfirmRequired(PSTR("Continuous Purge Running..."));
@@ -273,10 +273,10 @@ bool load_filament(const float &slow_load_length/*=0*/, const float &fast_load_l
             || runout.filament_ran_out
           #endif
         )
-          host_action_prompt_button(PSTR("DisableRunout"));
+          host_action_prompt_button(PSTR(MSG_HOST_DISABLE_RUNOUT));
         else {
           host_prompt_reason = PROMPT_FILAMENT_RUNOUT;
-          host_action_prompt_button(PSTR("Continue"));
+          host_action_prompt_button(PSTR(MSG_HOST_CONTINUE));
         }
         host_action_prompt_show();
       #endif
@@ -524,7 +524,7 @@ void wait_for_confirmation(const bool is_reload/*=false*/, const int8_t max_beep
   KEEPALIVE_STATE(PAUSED_FOR_USER);
   wait_for_user = true;    // LCD click or M108 will clear this
   #if ENABLED(HOST_PROMPT_SUPPORT)
-    host_prompt_do(PROMPT_USER_CONTINUE, PSTR("Nozzle Parked"), PSTR("Continue"));
+    host_prompt_do(PROMPT_USER_CONTINUE, PSTR(MSG_HOST_NOZZLE_PARKED), PSTR(MSG_HOST_CONTINUE);
   #endif
   #if ENABLED(EXTENSIBLE_UI)
     ExtUI::onUserConfirmRequired(PSTR("Nozzle Parked"));
@@ -547,7 +547,7 @@ void wait_for_confirmation(const bool is_reload/*=false*/, const int8_t max_beep
       SERIAL_ECHO_MSG(_PMSG(MSG_FILAMENT_CHANGE_HEAT));
 
       #if ENABLED(HOST_PROMPT_SUPPORT)
-        host_prompt_do(PROMPT_USER_CONTINUE, PSTR("HeaterTimeout"), PSTR("Reheat"));
+        host_prompt_do(PROMPT_USER_CONTINUE, PSTR(MSG_HOST_HEATER_TIMEOUT), PSTR(MSG_HOST_REHEAT));
       #endif
 
       #if ENABLED(EXTENSIBLE_UI)
@@ -558,7 +558,7 @@ void wait_for_confirmation(const bool is_reload/*=false*/, const int8_t max_beep
       while (wait_for_user) idle(true);
 
       #if ENABLED(HOST_PROMPT_SUPPORT)
-        host_prompt_do(PROMPT_INFO, PSTR("Reheating"));
+        host_prompt_do(PROMPT_INFO, PSTR(MSG_HOST_REHEATING));
       #endif
       #if ENABLED(EXTENSIBLE_UI)
         ExtUI::onStatusChanged(PSTR("Reheating..."));
@@ -578,7 +578,7 @@ void wait_for_confirmation(const bool is_reload/*=false*/, const int8_t max_beep
 
       HOTEND_LOOP() thermalManager.hotend_idle[e].start(nozzle_timeout);
       #if ENABLED(HOST_PROMPT_SUPPORT)
-        host_prompt_do(PROMPT_USER_CONTINUE, PSTR("Reheat Done"), PSTR("Continue"));
+        host_prompt_do(PROMPT_USER_CONTINUE, PSTR(MSG_HOST_REHEAT_DONE), PSTR(MSG_HOST_CONTINUE));
       #endif
       #if ENABLED(EXTENSIBLE_UI)
         ExtUI::onUserConfirmRequired("Reheat finished.");
@@ -681,7 +681,7 @@ void resume_print(const float &slow_load_length/*=0*/, const float &fast_load_le
   --did_pause_print;
 
   #if ENABLED(HOST_PROMPT_SUPPORT)
-    host_prompt_open(PROMPT_INFO, PSTR("Resuming"), PSTR("Dismiss"));
+    host_prompt_open(PROMPT_INFO, PSTR(MSG_HOST_RESUMING), PSTR(MSG_HOST_DISMISS));
   #endif
 
   #if ENABLED(SDSUPPORT)
