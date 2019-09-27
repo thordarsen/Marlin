@@ -354,7 +354,7 @@ void disable_all_steppers() {
     #if ENABLED(HOST_PROMPT_SUPPORT)
       host_prompt_reason = PROMPT_FILAMENT_RUNOUT;
       host_action_prompt_end();
-      host_action_prompt_begin(PSTR("FilamentRunout T"), false);
+      host_action_prompt_begin(PSTR(MSG_HOST_FILAMENT_RUNOUT), false);
       SERIAL_CHAR(tool);
       SERIAL_EOL();
       host_action_prompt_show();
@@ -414,7 +414,7 @@ void disable_all_steppers() {
 
   void event_probe_recover() {
     #if ENABLED(HOST_PROMPT_SUPPORT)
-      host_prompt_do(PROMPT_INFO, PSTR("G29 Retrying"), PSTR("Dismiss"));
+      host_prompt_do(PROMPT_INFO, PSTR(MSG_HOST_G29RETRY), PSTR(MSG_HOST_DISMISS));
     #endif
     #ifdef ACTION_ON_G29_RECOVER
       host_action(PSTR(ACTION_ON_G29_RECOVER));
