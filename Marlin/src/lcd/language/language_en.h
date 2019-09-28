@@ -1585,7 +1585,7 @@
   #define MSG_HOST_RESUME                     _UxGT("Resume")
 #endif
 #ifndef MSG_HOST_CONTINUE
-  #define MSG_HOST_CONTINUE                    _UxGT("Continue")
+  #define MSG_HOST_CONTINUE                   _UxGT("Continue")
 #endif
 
 #ifndef MSG_HOST_ABORT
@@ -1607,11 +1607,29 @@
   #define MSG_HOST_CONTINUOUS_PURGE           _UxGT("Continuous Purge Running...")
 #endif
 #ifndef MSG_HOST_DISABLE_RUNOUT
-  #define MSG_HOST_DISABLE_RUNOUT                      _UxGT("DisableRunout")
+  #define MSG_HOST_DISABLE_RUNOUT             _UxGT("DisableRunout")
 #endif
 #ifndef MSG_HOST_NOZZLE_PARKED
-  #define MSG_HOST_NOZZLE_PARKED                      _UxGT("Nozzle Parked")
+  #define MSG_HOST_NOZZLE_PARKED              _UxGT("Nozzle Parked")
 #endif
+#ifndef MSG_HOST_HEATER_TIMEOUT
+  #define MSG_HOST_HEATER_TIMEOUT             _UxGT("HeaterTimeout")
+#endif
+#ifndef MSG_HOST_REHEAT
+  #define MSG_HOST_REHEAT                     _UxGT("Reheat")
+#endif
+#ifndef MSG_HOST_REHEATING
+  #define MSG_HOST_REHEATING                  _UxGT("Reheating")
+#endif
+#ifndef MSG_HOST_RESUMING
+  #define MSG_HOST_RESUMING                   _UxGT("Resuming")
+#endif
+#ifndef MSG_HOST_PAUSE_SD
+  #define MSG_HOST_PAUSE_SD                   _UxGT("Pause SD")
+#endif
+
+
+
 
 
 
