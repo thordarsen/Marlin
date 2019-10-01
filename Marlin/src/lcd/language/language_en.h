@@ -1618,6 +1618,9 @@
 #ifndef MSG_HOST_REHEAT
   #define MSG_HOST_REHEAT                     _UxGT("Reheat")
 #endif
+#ifndef MSG_HOST_REHEAT_DONE
+  #define MSG_HOST_REHEAT_DONE                _UxGT("Reheat Done")
+#endif
 #ifndef MSG_HOST_REHEATING
   #define MSG_HOST_REHEATING                  _UxGT("Reheating")
 #endif
