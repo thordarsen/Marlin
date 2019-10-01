@@ -524,7 +524,7 @@ void wait_for_confirmation(const bool is_reload/*=false*/, const int8_t max_beep
   KEEPALIVE_STATE(PAUSED_FOR_USER);
   wait_for_user = true;    // LCD click or M108 will clear this
   #if ENABLED(HOST_PROMPT_SUPPORT)
-    host_prompt_do(PROMPT_USER_CONTINUE, PSTR(MSG_HOST_NOZZLE_PARKED), PSTR(MSG_HOST_CONTINUE);
+    host_prompt_do(PROMPT_USER_CONTINUE, PSTR(MSG_HOST_NOZZLE_PARKED), PSTR(MSG_HOST_CONTINUE));
   #endif
   #if ENABLED(EXTENSIBLE_UI)
     ExtUI::onUserConfirmRequired(PSTR("Nozzle Parked"));
