@@ -39,7 +39,7 @@
 #endif
 
 void lcd_sd_updir() {
-  ui.encoderPosition = card.updir() ? ENCODER_STEPS_PER_MENU_ITEM : 0;
+  ui.encoderPosition = card.cdup() ? ENCODER_STEPS_PER_MENU_ITEM : 0;
   encoderTopLine = 0;
   screen_changed = true;
   ui.refresh();
@@ -97,7 +97,7 @@ inline void sdcard_start_selected_file() {
 
 class MenuItem_sdfile {
   public:
-    static void action(CardReader &) {
+    static void action(PGM_P const pstr, CardReader &) {
       #if ENABLED(SD_REPRINT_LAST_SELECTED_FILE)
         // Save menu state for the selected file
         sd_encoder_position = ui.encoderPosition;
@@ -105,17 +105,18 @@ class MenuItem_sdfile {
         sd_items = screen_items;
       #endif
       #if ENABLED(SD_MENU_CONFIRM_START)
-        MenuItem_submenu::action(menu_sd_confirm);
+        MenuItem_submenu::action(pstr, menu_sd_confirm);
       #else
         sdcard_start_selected_file();
+        UNUSED(pstr);
       #endif
     }
 };
 
 class MenuItem_sdfolder {
   public:
-    static void action(CardReader &theCard) {
-      card.chdir(theCard.filename);
+    static void action(PGM_P const, CardReader &theCard) {
+      card.cd(theCard.filename);
       encoderTopLine = 0;
       ui.encoderPosition = 2 * (ENCODER_STEPS_PER_MENU_ITEM);
       screen_changed = true;
