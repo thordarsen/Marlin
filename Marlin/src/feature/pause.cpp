@@ -402,7 +402,7 @@ bool pause_print(const float &retract, const point_t &park_point, const float &u
   #endif
 
   #if ENABLED(HOST_PROMPT_SUPPORT)
-    host_prompt_open(PROMPT_INFO, PSTR("Pause"), PSTR("Dismiss"));
+    host_prompt_open(PROMPT_INFO, PSTR(MSG_HOST_PAUSE), PSTR(MSG_HOST_DISMISS));
   #endif
 
   if (!DEBUGGING(DRYRUN) && unload_length && thermalManager.targetTooColdToExtrude(active_extruder)) {
