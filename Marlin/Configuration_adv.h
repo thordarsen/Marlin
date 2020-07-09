@@ -2835,10 +2835,10 @@
  *
  * See https://marlinfw.org/docs/configuration/laser_spindle.html for more config details.
  */
-//#define SPINDLE_FEATURE
+#define SPINDLE_FEATURE
 //#define LASER_FEATURE
 #if EITHER(SPINDLE_FEATURE, LASER_FEATURE)
-  #define SPINDLE_LASER_ACTIVE_HIGH     false  // Set to "true" if the on/off function is active HIGH
+  #define SPINDLE_LASER_ACTIVE_HIGH     true  // Set to "true" if the on/off function is active HIGH
   #define SPINDLE_LASER_PWM             true   // Set to "true" if your controller supports setting the speed/power
   #define SPINDLE_LASER_PWM_INVERT      false  // Set to "true" if the speed/power goes up when you want it to go slower
 
@@ -2880,9 +2880,9 @@
      * PWMDC = (spdpwr - SPEED_POWER_MIN) / (SPEED_POWER_MAX - SPEED_POWER_MIN) / SPEED_POWER_SLOPE
      */
     #define SPEED_POWER_INTERCEPT         0    // (%) 0-100 i.e., Minimum power percentage
-    #define SPEED_POWER_MIN            5000    // (RPM)
-    #define SPEED_POWER_MAX           30000    // (RPM) SuperPID router controller 0 - 30,000 RPM
-    #define SPEED_POWER_STARTUP       25000    // (RPM) M3/M4 speed/power default (with no arguments)
+    #define SPEED_POWER_MIN              0    // (RPM)
+    #define SPEED_POWER_MAX             255    // (RPM) SuperPID router controller 0 - 30,000 RPM
+    #define SPEED_POWER_STARTUP         255    // (RPM) M3/M4 speed/power default (with no arguments)
 
   #else
 
