@@ -70,6 +70,21 @@
 #define E0_DIR_PIN                          PB0
 #define E0_ENABLE_PIN                       PC4
 
+#if HAS_TMC_UART
+  #ifndef X_SERIAL_TX_PIN
+    #define X_SERIAL_TX_PIN                   PB3
+  #endif
+  #ifndef X_SERIAL_RX_PIN
+    #define X_SERIAL_RX_PIN                   PB4
+  #endif
+  #ifndef Y_SERIAL_TX_PIN
+    #define Y_SERIAL_TX_PIN                   PA15
+  #endif
+  #ifndef Y_SERIAL_RX_PIN
+    #define Y_SERIAL_RX_PIN                   PD2
+  #endif
+#endif //HAS_TMC_UART
+
 #if ENABLED(TMC_USE_SW_SPI)
   #ifndef TMC_SW_SCK
     #define TMC_SW_SCK                      PB3
