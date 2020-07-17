@@ -71,19 +71,19 @@
 #define E0_ENABLE_PIN                       PC4
 
 #if HAS_TMC_UART
-//  #ifndef X_SERIAL_TX_PIN
-//    #define X_SERIAL_TX_PIN                   PC10
-//  #endif
-//  #ifndef X_SERIAL_RX_PIN
-//    #define X_SERIAL_RX_PIN                   PC11
-//  #endif
-//  #ifndef Y_SERIAL_TX_PIN
-//    #define Y_SERIAL_TX_PIN                   PC10
-//  #endif
-//  #ifndef Y_SERIAL_RX_PIN
-//    #define Y_SERIAL_RX_PIN                   PC11
-//  #endif
-  #define X_HARDWARE_SERIAL Serial3
+  #ifndef X_SERIAL_TX_PIN
+    #define X_SERIAL_TX_PIN                   PC10
+  #endif
+  #ifndef X_SERIAL_RX_PIN
+    #define X_SERIAL_RX_PIN                   PC11
+  #endif
+  #ifndef Y_SERIAL_TX_PIN
+    #define Y_SERIAL_TX_PIN                   PB6
+  #endif
+  #ifndef Y_SERIAL_RX_PIN
+    #define Y_SERIAL_RX_PIN                   PC12
+  #endif
+//  #define X_HARDWARE_SERIAL Serial3
 //  #define Y_HARDWARE_SERIAL Serial4
 #endif //HAS_TMC_UART
 
