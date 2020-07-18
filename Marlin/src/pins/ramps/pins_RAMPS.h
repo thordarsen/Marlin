@@ -307,9 +307,9 @@
    * Hardware serial communication ports.
    * If undefined software serial is used according to the pins below
    */
-  #define X_HARDWARE_SERIAL Serial2
-  //#define X2_HARDWARE_SERIAL Serial1
-  //#define Y_HARDWARE_SERIAL Serial1
+  //#define X_HARDWARE_SERIAL Serial3
+  //#define X2_HARDWARE_SERIAL Serial2
+  //#define Y_HARDWARE_SERIAL Serial3
   //#define Y2_HARDWARE_SERIAL Serial1
   //#define Z_HARDWARE_SERIAL Serial1
   //#define Z2_HARDWARE_SERIAL Serial1
@@ -323,12 +323,12 @@
   // Software serial
   //
 
-  //#ifndef X_SERIAL_TX_PIN
-  //  #define X_SERIAL_TX_PIN                   40
-  //#endif
-  //#ifndef X_SERIAL_RX_PIN
-  //  #define X_SERIAL_RX_PIN                   63
-  //#endif
+  #ifndef X_SERIAL_TX_PIN
+    #define X_SERIAL_TX_PIN                   16
+  #endif
+  #ifndef X_SERIAL_RX_PIN
+    #define X_SERIAL_RX_PIN                   17
+  #endif
   #ifndef X2_SERIAL_TX_PIN
     #define X2_SERIAL_TX_PIN                  -1
   #endif
@@ -336,15 +336,15 @@
     #define X2_SERIAL_RX_PIN                  -1
   #endif
 
-  #ifndef Y_SERIAL_TX_PIN
-    #define Y_SERIAL_TX_PIN                   59
-  #endif
-  #ifndef Y_SERIAL_RX_PIN
-    #define Y_SERIAL_RX_PIN                   64
-  #endif
-  #ifndef Y2_SERIAL_TX_PIN
-    #define Y2_SERIAL_TX_PIN                  -1
-  #endif
+  //#ifndef Y_SERIAL_TX_PIN
+  //  #define Y_SERIAL_TX_PIN                   16
+  //#endif
+  //#ifndef Y_SERIAL_RX_PIN
+  //  #define Y_SERIAL_RX_PIN                   17
+  //#endif
+  //#ifndef Y2_SERIAL_TX_PIN
+  //  #define Y2_SERIAL_TX_PIN                  -1
+  //#endif
   #ifndef Y2_SERIAL_RX_PIN
     #define Y2_SERIAL_RX_PIN                  -1
   #endif
