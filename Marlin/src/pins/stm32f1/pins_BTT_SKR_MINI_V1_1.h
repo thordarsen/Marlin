@@ -83,6 +83,7 @@
   #ifndef Y_SERIAL_RX_PIN
     #define Y_SERIAL_RX_PIN                   PC12
   #endif
+  #define TMC_BAUD_RATE 19200
 //  #define X_HARDWARE_SERIAL Serial3
 //  #define Y_HARDWARE_SERIAL Serial4
 #endif //HAS_TMC_UART
