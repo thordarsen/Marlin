@@ -44,9 +44,9 @@
 // Limit Switches
 //
 #define X_MIN_PIN                           PC2
-#define X_MAX_PIN                           PA2
+//#define X_MAX_PIN                           PA2
 #define Y_MIN_PIN                           PC1
-#define Y_MAX_PIN                           PA1
+//#define Y_MAX_PIN                           PA1
 #define Z_MIN_PIN                           PC0
 #define Z_MAX_PIN                           PC3
 
@@ -86,6 +86,29 @@
   #define TMC_BAUD_RATE 19200
 //  #define X_HARDWARE_SERIAL Serial3
 //  #define Y_HARDWARE_SERIAL Serial4
+  #define X_DIAG_PIN                         PC2  // X-STOP
+  #define Y_DIAG_PIN                         PC1  // Y-STOP
+
+  //
+  // Limit Switches
+  //
+  #ifdef X_STALL_SENSITIVITY
+    #define X_STOP_PIN                  X_DIAG_PIN
+    #if X_HOME_DIR < 0
+      #define X_MAX_PIN                      PA2  // E0DET
+    #endif
+  #else
+    #define X_STOP_PIN                       X_MIN_PIN  // X-STOP
+  #endif
+
+  #ifdef Y_STALL_SENSITIVITY
+    #define Y_STOP_PIN                  Y_DIAG_PIN
+    #if Y_HOME_DIR < 0
+      #define Y_MAX_PIN                      PA1  // E1DET
+    #endif
+  #else
+    #define Y_STOP_PIN                       Y_MIN_PIN  // Y-STOP
+  #endif
 #endif //HAS_TMC_UART
 
 #if ENABLED(TMC_USE_SW_SPI)
