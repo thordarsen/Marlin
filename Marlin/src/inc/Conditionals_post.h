@@ -128,11 +128,14 @@
 #if EITHER(COREYZ, COREZY)
   #define CORE_IS_YZ 1
 #endif
-#if CORE_IS_XY || CORE_IS_XZ || CORE_IS_YZ
+#if CORE_MARKFORGED
+  #define CORE_IS_MARKFORGED 1
+#endif
+#if CORE_IS_XY || CORE_IS_XZ || CORE_IS_YZ || CORE_IS_MARKFORGED
   #define IS_CORE 1
 #endif
 #if IS_CORE
-  #if CORE_IS_XY
+  #if CORE_IS_XY || CORE_IS_MARKFORGED
     #define CORE_AXIS_1 A_AXIS
     #define CORE_AXIS_2 B_AXIS
     #define NORMAL_AXIS Z_AXIS
