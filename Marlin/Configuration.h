@@ -616,6 +616,7 @@
 //#define COREYX
 //#define COREZX
 //#define COREZY
+#define CORE_MARKFORGED
 
 //===========================================================================
 //============================== Endstop Settings ===========================
