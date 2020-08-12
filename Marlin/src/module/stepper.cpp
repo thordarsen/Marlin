@@ -2618,6 +2618,9 @@ void Stepper::_set_position(const int32_t &a, const int32_t &b, const int32_t &c
   #elif CORE_IS_YZ
     // coreyz planning
     count_position.set(a, b + c, CORESIGN(b - c));
+  #elif CORE_IS_MARKFORGED
+    // coremarkforged positioning
+    count_position.set(a + b, b, c);
   #else
     // default non-h-bot planning
     count_position.set(a, b, c);
@@ -2679,11 +2682,17 @@ void Stepper::endstop_triggered(const AxisEnum axis) {
 
   const bool was_enabled = suspend();
   endstops_trigsteps[axis] = (
-    #if IS_CORE
+    #if IS_CORE && !CORE_IS_MARKFORGED
       (axis == CORE_AXIS_2
         ? CORESIGN(count_position[CORE_AXIS_1] - count_position[CORE_AXIS_2])
         : count_position[CORE_AXIS_1] + count_position[CORE_AXIS_2]
       ) * double(0.5)
+    //questions abound... should it be CORE_AXIS_2 in the second one?
+    #elif CORE_IS_MARKFORGED
+      (axis == CORE_AXIS_1
+        ? count_position[CORE_AXIS_1] + count_position[CORE_AXIS_2]
+        : count_position[axis] // + count_position[CORE_AXIS_2]
+      )
     #else // !IS_CORE
       count_position[axis]
     #endif
@@ -2713,7 +2722,7 @@ int32_t Stepper::triggered_position(const AxisEnum axis) {
 }
 
 void Stepper::report_a_position(const xyz_long_t &pos) {
-  #if CORE_IS_XY || CORE_IS_XZ || ENABLED(DELTA) || IS_SCARA
+  #if CORE_IS_XY || CORE_IS_XZ || ENABLED(DELTA) || IS_SCARA || CORE_IS_MARKFORGED
     SERIAL_ECHOPAIR(STR_COUNT_A, pos.x, " B:", pos.y);
   #else
     SERIAL_ECHOPAIR_P(PSTR(STR_COUNT_X), pos.x, SP_Y_LBL, pos.y);
@@ -2835,7 +2844,7 @@ void Stepper::report_positions() {
     #endif
 
     switch (axis) {
-
+// not done fomarkforged kinematics 
       #if ENABLED(BABYSTEP_XY)
 
         case X_AXIS:
@@ -2849,7 +2858,7 @@ void Stepper::report_positions() {
           break;
 
         case Y_AXIS:
-          #if CORE_IS_XY
+          #if CORE_IS_XY || CORE_IS_MARKFORGED
             BABYSTEP_CORE(X, Y, 1, !direction, (CORESIGN(1)>0));
           #elif CORE_IS_YZ
             BABYSTEP_CORE(Y, Z, 0, direction, (CORESIGN(1)<0));
