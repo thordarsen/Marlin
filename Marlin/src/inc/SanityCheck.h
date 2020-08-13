@@ -1149,8 +1149,9 @@ static_assert(Y_MAX_LENGTH >= Y_BED_SIZE, "Movement bounds (Y_MIN_POS, Y_MAX_POS
   + ENABLED(COREYZ) \
   + ENABLED(COREYX) \
   + ENABLED(COREZX) \
-  + ENABLED(COREZY)
-  #error "Please enable only one of DELTA, MORGAN_SCARA, COREXY, COREYX, COREXZ, COREZX, COREYZ, or COREZY."
+  + ENABLED(COREZY) \
+  + ENABLED(CORE_MARKFORGED)
+  #error "Please enable only one of DELTA, MORGAN_SCARA, COREXY, COREYX, COREXZ, COREZX, COREYZ, COREZY or CORE_MARKFORGED."
 #endif
 
 /**
@@ -2516,7 +2517,7 @@ static_assert(hbm[Z_AXIS] >= 0, "HOMING_BUMP_MM.Z must be greater than or equal 
 #endif
 
 // Sensorless homing is required for both combined steppers in an H-bot
-#if CORE_IS_XY && X_SENSORLESS != Y_SENSORLESS
+#if (CORE_IS_XY || CORE_IS_MARKFORGED) && X_SENSORLESS != Y_SENSORLESS
   #error "CoreXY requires both X and Y to use sensorless homing if either one does."
 #elif CORE_IS_XZ && X_SENSORLESS != Z_SENSORLESS && !HOMING_Z_WITH_PROBE
   #error "CoreXZ requires both X and Z to use sensorless homing if either one does."
