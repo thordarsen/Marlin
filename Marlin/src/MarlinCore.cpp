@@ -387,7 +387,9 @@ void disable_all_steppers() {
   }
 
   void event_probe_recover() {
-    TERN_(HOST_PROMPT_SUPPORT, host_prompt_do(PROMPT_INFO, PSTR("G29 Retrying"), DISMISS_STR));
+    #if ENABLED(HOST_PROMPT_SUPPORT)
+      host_prompt_do(PROMPT_INFO, PSTR("G29 Retrying"), PSTR("Dismiss"));
+    #endif
     #ifdef ACTION_ON_G29_RECOVER
       host_action(PSTR(ACTION_ON_G29_RECOVER));
     #endif
@@ -1174,8 +1176,12 @@ void setup() {
     SETUP_RUN(host_action_prompt_end());
   #endif
 
-  #if HAS_TRINAMIC_CONFIG && DISABLED(PSU_DEFAULT_OFF)
-    SETUP_RUN(test_tmc_connection(true, true, true, true));
+  #if ENABLED(HOST_PROMPT_SUPPORT)
+    host_action_prompt_end();
+  #endif
+
+  #if HAS_TRINAMIC && DISABLED(PS_DEFAULT_OFF)
+    test_tmc_connection(true, true, true, true);
   #endif
 
   #if ENABLED(PRUSA_MMU2)

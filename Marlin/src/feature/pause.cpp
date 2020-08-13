@@ -370,7 +370,9 @@ bool pause_print(const float &retract, const xyz_pos_t &park_point, const float 
     #endif
   #endif
 
-  TERN_(HOST_PROMPT_SUPPORT, host_prompt_open(PROMPT_INFO, PSTR("Pause"), DISMISS_STR));
+  #if ENABLED(HOST_PROMPT_SUPPORT)
+    host_prompt_open(PROMPT_INFO, PSTR("Pause"), PSTR("Dismiss"));
+  #endif
 
   if (!DEBUGGING(DRYRUN) && unload_length && thermalManager.targetTooColdToExtrude(active_extruder)) {
     SERIAL_ECHO_MSG(STR_ERR_HOTEND_TOO_COLD);
@@ -497,9 +499,12 @@ void wait_for_confirmation(const bool is_reload/*=false*/, const int8_t max_beep
 
       wait_for_user_response(0, true); // Wait for LCD click or M108
 
-      TERN_(HOST_PROMPT_SUPPORT, host_prompt_do(PROMPT_INFO, GET_TEXT(MSG_REHEATING)));
-
-      TERN_(EXTENSIBLE_UI, ExtUI::onStatusChanged_P(GET_TEXT(MSG_REHEATING)));
+      #if ENABLED(HOST_PROMPT_SUPPORT)
+        host_prompt_do(PROMPT_INFO, PSTR("Reheating"));
+      #endif
+      #if ENABLED(EXTENSIBLE_UI)
+        ExtUI::onStatusChanged(PSTR("Reheating..."));
+      #endif
 
       // Re-enable the heaters if they timed out
       HOTEND_LOOP() thermalManager.reset_hotend_idle_timer(e);
@@ -623,7 +628,9 @@ void resume_print(const float &slow_load_length/*=0*/, const float &fast_load_le
 
   --did_pause_print;
 
-  TERN_(HOST_PROMPT_SUPPORT, host_prompt_open(PROMPT_INFO, PSTR("Resuming"), DISMISS_STR));
+  #if ENABLED(HOST_PROMPT_SUPPORT)
+    host_prompt_open(PROMPT_INFO, PSTR("Resuming"), PSTR("Dismiss"));
+  #endif
 
   #if ENABLED(SDSUPPORT)
     if (did_pause_print) { card.startFileprint(); --did_pause_print; }
