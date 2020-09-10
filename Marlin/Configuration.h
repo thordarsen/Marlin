@@ -258,7 +258,7 @@
  * Support swappable and dockable toolheads with a magnetic
  * docking mechanism using movement and no servo.
  */
-//#define MAGNETIC_SWITCHING_TOOLHEAD
+#define MAGNETIC_SWITCHING_TOOLHEAD
 
 /**
  * Electromagnetic Switching Toolhead
