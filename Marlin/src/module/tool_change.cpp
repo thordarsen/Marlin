@@ -487,6 +487,7 @@ inline void fast_line_to_current(const AxisEnum fr_axis) { _line_to_current(fr_a
      * 3. Move to the new toolhead
      * 4. Grab the new toolhead and move to security position
      */
+    SERIAL_ECHOLNPGM(" into MST TC func");
 
     DEBUG_POS("Start MST Tool-Change", current_position);
 
@@ -836,8 +837,9 @@ void tool_change_prime() {
  * previous tool out of the way and the new tool into place.
  */
 void tool_change(const uint8_t new_tool, bool no_move/*=false*/) {
-
+  SERIAL_ECHOLNPGM(" start TC");
   if (TERN0(MAGNETIC_SWITCHING_TOOLHEAD, new_tool == active_extruder))
+    SERIAL_ECHOLNPGM(" returnblock TC");
     return;
 
   #if ENABLED(MIXING_EXTRUDER)
