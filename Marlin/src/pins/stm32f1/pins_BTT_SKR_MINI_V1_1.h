@@ -97,7 +97,6 @@
   // Limit Switches
   //
   #ifdef X_STALL_SENSITIVITY
-    #define X_STOP_PIN                  X_DIAG_PIN
     #if X_HOME_DIR < 0
       #define X_MAX_PIN                      PA2  // E0DET
     #endif
@@ -106,7 +105,6 @@
   #endif
 
   #ifdef Y_STALL_SENSITIVITY
-    #define Y_STOP_PIN                  Y_DIAG_PIN
     #if Y_HOME_DIR < 0
       #define Y_MAX_PIN                      PA1  // E1DET
     #endif
@@ -138,9 +136,9 @@
 //
 // Temperature Sensors
 //
-#define TEMP_BED_PIN                        PB1   // Analog Input
+#define TEMP_BED_PIN                        -1   // Analog Input
 #define TEMP_0_PIN                          PA0   // Analog Input
-#define TEMP_1_PIN                          PA0   // Analog Input
+#define TEMP_1_PIN                          PB1   // Analog Input
 
 //
 // LCD Pins
