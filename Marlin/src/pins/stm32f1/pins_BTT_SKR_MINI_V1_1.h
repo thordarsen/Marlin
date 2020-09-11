@@ -70,6 +70,10 @@
 #define E0_DIR_PIN                          PB0
 #define E0_ENABLE_PIN                       PC4
 
+#define E1_STEP_PIN                         PC5
+#define E1_DIR_PIN                          PB0
+#define E1_ENABLE_PIN                       PC4
+
 #if HAS_TMC_UART
   #ifndef X_SERIAL_TX_PIN
     #define X_SERIAL_TX_PIN                   PC10
@@ -127,6 +131,7 @@
 // Heaters / Fans
 //
 #define HEATER_0_PIN                        PA8
+#define HEATER_1_PIN                        PA8
 #define FAN_PIN                             PC8
 #define HEATER_BED_PIN                      PC9
 
@@ -135,6 +140,7 @@
 //
 #define TEMP_BED_PIN                        PB1   // Analog Input
 #define TEMP_0_PIN                          PA0   // Analog Input
+#define TEMP_1_PIN                          PA0   // Analog Input
 
 //
 // LCD Pins
