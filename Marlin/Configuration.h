@@ -270,16 +270,16 @@
 //#define ELECTROMAGNETIC_SWITCHING_TOOLHEAD
 
 #if ANY(SWITCHING_TOOLHEAD, MAGNETIC_SWITCHING_TOOLHEAD, ELECTROMAGNETIC_SWITCHING_TOOLHEAD)
-  #define SWITCHING_TOOLHEAD_Y_POS          235         // (mm) Y position of the toolhead dock
-  #define SWITCHING_TOOLHEAD_Y_SECURITY      10         // (mm) Security distance Y axis
-  #define SWITCHING_TOOLHEAD_Y_CLEAR         60         // (mm) Minimum distance from dock for unobstructed X axis
-  #define SWITCHING_TOOLHEAD_X_POS          { 215, 0 }  // (mm) X positions for parking the extruders
+  #define SWITCHING_TOOLHEAD_Y_POS          298.5         // (mm) Y position of the toolhead dock
+  #define SWITCHING_TOOLHEAD_Y_SECURITY      -23.5         // (mm) Security distance Y axis
+  #define SWITCHING_TOOLHEAD_Y_CLEAR         -50         // (mm) Minimum distance from dock for unobstructed X axis
+  #define SWITCHING_TOOLHEAD_X_POS          { 17.3, 210.8 }  // (mm) X positions for parking the extruders
   #if ENABLED(SWITCHING_TOOLHEAD)
     #define SWITCHING_TOOLHEAD_SERVO_NR       2         // Index of the servo connector
     #define SWITCHING_TOOLHEAD_SERVO_ANGLES { 0, 180 }  // (degrees) Angles for Lock, Unlock
   #elif ENABLED(MAGNETIC_SWITCHING_TOOLHEAD)
-    #define SWITCHING_TOOLHEAD_Y_RELEASE      5         // (mm) Security distance Y axis
-    #define SWITCHING_TOOLHEAD_X_SECURITY   { 90, 150 } // (mm) Security distance X axis (T0,T1)
+    #define SWITCHING_TOOLHEAD_Y_RELEASE      0         // (mm) Security distance Y axis
+    #define SWITCHING_TOOLHEAD_X_SECURITY   { 60, 255} // (mm) Security distance X axis (T0,T1)
     #define SWITCHING_TOOLHEAD_Z_HOP          2         // (mm) Z raise for switching
     //#define PRIME_BEFORE_REMOVE                       // Prime the nozzle before release from the dock
     #if ENABLED(PRIME_BEFORE_REMOVE)
@@ -1115,7 +1115,7 @@
 
 //#define NO_MOTION_BEFORE_HOMING // Inhibit movement until all axes have been homed
 
-//#define UNKNOWN_Z_NO_RAISE      // Don't raise Z (lower the bed) if Z is "unknown." For beds that fall when Z is powered off.
+#define UNKNOWN_Z_NO_RAISE      // Don't raise Z (lower the bed) if Z is "unknown." For beds that fall when Z is powered off.
 
 //#define Z_HOMING_HEIGHT  4      // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
                                   // Be sure to have this much clearance over your Z_MAX_POS to prevent grinding.
@@ -1131,8 +1131,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 250
-#define Y_BED_SIZE 250
+#define X_BED_SIZE 295
+#define Y_BED_SIZE 299
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
