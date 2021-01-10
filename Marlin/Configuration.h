@@ -128,7 +128,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_BTT_SKR_MINI_V1_1
+  #define MOTHERBOARD BOARD_BTT_SKR_PRO_1_2
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
@@ -749,7 +749,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 400, 500 }
 
 /**
  * Default Max Feed Rate (mm/s)
